@@ -1,0 +1,33 @@
+.landing-page {
+    span {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        &:last-child {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+}
+
+.category-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    .category-card {
+        box-shadow: 0px 4px 8px 0px #bfb7b7;
+        transition: 0.3s;
+        margin: 8px;
+        .item-name {
+            background: #1b7de6;
+            padding: 6px 12px;
+            font-size: 16px;
+            color: #ffff;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+    }
+}

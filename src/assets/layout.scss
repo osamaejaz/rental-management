@@ -1,0 +1,25 @@
+.layout-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    .header-container {
+        // padding: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        position: fixed;
+        width: 100%;
+        z-index: 90;
+        background: #ffffff;
+    }
+    .main-content {
+        padding-top: 60px;
+        overflow-y: auto;
+        height: 100vh;
+        main {
+            height: 100%;
+            display: flex;
+            place-items: center;
+            justify-content: center;
+        }
+    }
+}
