@@ -8,36 +8,39 @@ export default function Header(props) {
         <header className='header-container'>
             <Navbar bg='dark' variant='dark'>
                 <Navbar.Brand>
-                    <Link to='/'>Rental Management System</Link>
+                    <Link to='/' style={{ color: '#ffffff' }}>
+                        Rental Management System
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
-                    <Nav className='mr-auto'>
+                    <Nav>
                         <NavDropdown
                             title='Select Location'
                             id='basic-nav-dropdown'
                         >
                             {props.locations.map((location, index) => {
                                 return (
-                                    <NavDropdown.Item key={location.name}>
+                                    <div
+                                        key={location.name}
+                                        className='dropdown-list-item'
+                                    >
                                         {location?.name}
                                         <div className='dropdown-sub-menu'>
-                                            {location.branches.map((branch) => {
-                                                return (
-                                                    <div
-                                                        key={branch.name}
-                                                        onClick={() =>
-                                                            props.handleSelection(
-                                                                branch
-                                                            )
-                                                        }
-                                                    >
-                                                        {branch?.name}
-                                                    </div>
-                                                );
-                                            })}
+                                            {location.branches.map(
+                                                (branch, index) => {
+                                                    return (
+                                                        <Link
+                                                            key={index}
+                                                            to={`/${location?.dealers_id}/category/${branch?.branch_id}`}
+                                                        >
+                                                            {branch?.name}
+                                                        </Link>
+                                                    );
+                                                }
+                                            )}
                                         </div>
-                                    </NavDropdown.Item>
+                                    </div>
                                 );
                             })}
                         </NavDropdown>

@@ -1,38 +1,52 @@
 .header-container {
-    .dropdown-sub-menu {
-        display: none;
-        position: absolute;
-        left: 100%;
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        width: 100%;
-        padding: 0.25rem 1.5rem;
-        clear: both;
-        font-weight: 400;
-        color: #212529;
-        text-align: inherit;
-        white-space: nowrap;
-        border-radius: 5px;
-        margin-top: -30px;
-        &:hover {
-            font-size: 16px;
-            font-weight: 500;
+    .dropdown-menu.show {
+        padding: 0px;
+        .dropdown-list-item {
+            border-bottom: 1px solid #cccc;
+            padding: 4px 8px;
+            font-size: 18px;
+            cursor: pointer;
+            &:hover > .dropdown-sub-menu {
+                display: block;
+                transition: 2s;
+            }
+            &:active > .dropdown-sub-menu {
+                display: block;
+                transition: 2s;
+            }
+            .dropdown-sub-menu {
+                display: none;
+                position: absolute;
+                left: 100%;
+                background: #ffffff;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                width: 100%;
+                clear: both;
+                font-weight: 400;
+                color: #212529;
+                text-align: inherit;
+                white-space: nowrap;
+                border-radius: 5px;
+                margin-top: -30px;
+                padding: 0px;
+                a {
+                    font-size: 18px;
+                    display: block;
+                    color: #333;
+                    border-bottom: 1px solid #cccc;
+                    padding: 6px 12px;
+                    &:hover {
+                        font-weight: 600;
+                        text-decoration: none;
+                    }
+                }
+            }
         }
     }
-
-    .dropdown-item:hover > .dropdown-sub-menu {
-        display: block;
-        transition: 2s;
+    #basic-navbar-nav {
+        flex-direction: column-reverse;
     }
-
-    .dropdown-item:active > .dropdown-sub-menu {
-        display: block;
-    }
-
-    .dropdown-item:active {
-        border: none !important;
-        background: none !important;
-        outline: none !important;
-        color: #333 !important;
+    #basic-nav-dropdown {
+        color: #ffffff !important;
     }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import ApiManager from '../services/dataSource';
+import Image from 'react-bootstrap/Image';
+import { Link } from 'react-router-dom';
 
 class CategoryDetails extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class CategoryDetails extends Component {
         console.log(decodeURI(this.props.match.params.name));
         ApiManager.getInstance()
             .getSubcategories({
+                dealers_id: this.props.match.params.dealers_id,
                 branch_id: this.props.match.params.branch_id,
                 category_name: this.props.match.params.name,
             })
@@ -28,10 +30,44 @@ class CategoryDetails extends Component {
     componentWillUnmount() {}
 
     render() {
-        const { itemDetails } = this.state;
+        const {
+            itemDetails: { subcategories = [] },
+            itemDetails,
+        } = this.state;
         return (
-            <div>
-                <p>{itemDetails?.name}</p>
+            <div className='category-page-container'>
+                <div className='breadcrumbs'>
+                    <span>Equipment Catalog</span>&nbsp; / &nbsp;
+                    <span>
+                        <Link
+                            to={`/${this.props.match.params.dealers_id}/category/${this.props.match.params.branch_id}`}
+                            style={{ color: '#333' }}
+                        >
+                            {itemDetails?.name}
+                        </Link>
+                    </span>
+                </div>
+                <div className='category-list'>
+                    {subcategories.map((item, index) => {
+                        return (
+                            <div className='category-card' key={index}>
+                                <div>
+                                    <Image
+                                        src={`${window.location.origin}/category/subcategory/${item?.image}`}
+                                        key={index}
+                                        fluid
+                                    />
+                                </div>
+                                <div className='item-name'>
+                                    <span>{item?.name}</span>
+                                    <span>
+                                        <i className='fa fa-caret-right'></i>
+                                    </span>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         );
     }
